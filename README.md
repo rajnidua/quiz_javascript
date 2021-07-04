@@ -24,3 +24,7 @@ Screenshots:
 ./Assets/images/screenshot3
 ./Assets/images/screenshot4
 ./Assets/images/screenshot5
+
+# Git hub repository link : https://github.com/rajnidua/quiz_javascript
+
+# Git hub project link : https://rajnidua.github.io/quiz_javascript/
