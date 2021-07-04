@@ -1,0 +1,24 @@
+.selected {
+  background-color: lightslategray;
+  border-style: solid;
+}
+.unselected {
+  background-color: blueviolet;
+}
+li {
+  cursor: pointer;
+}
+
+.line-row {
+  background-color: whitesmoke;
+  margin: 12px 12px 12px 12px;
+  padding: 3px 3px 3px 3px;
+}
+
+.line-row li {
+  color: white; /* text color is white */
+  /* Content, padding will be blue */
+  margin: 12px 12px 12px 12px;
+  padding: 12px 0px 12px 12px; /* Note 0px padding right */
+  list-style: none;
+}

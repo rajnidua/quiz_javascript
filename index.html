@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS Box Styling</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+        <button class="high-scores">High Scores</button>
+        <h3 class="message"></h3>  
+        <div class="card timer">
+            <div class="timer-count">
+              <div class="large-font timer-count">10</div>
+            </div>
+          </div>
+    </header>
+
+    <main>
+      <section>
+          <div class="card word-guess">
+          <div class="Question">Javascript Quiz</div>
+          <button class="start-button">START</button>
+        </div>
+      </section>
+      
+      <div class="quiz-container">
+      <div id="myQuiz"></div>
+      <div id="correctOrIncorrect"></div>
+    </div>
+    <form>
+        <!-- <label for="uname">Enter Your Name</label> -->
+            <textarea id="uName" name="userDetails"></textarea>
+            <button id="save">SAVE</button>
+    </form>
+    </main>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
