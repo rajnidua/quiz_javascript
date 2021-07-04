@@ -39,7 +39,7 @@ var topScorerName="";
 
 highScoreChart.addEventListener("click",function(){
 
-//window.open("./highestscore.html", "_blank");
+window.open("./highestscore.html", "_blank");
 });
 
 
