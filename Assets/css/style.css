@@ -1,3 +1,23 @@
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.start-button {
+  height: 50px;
+  width: 100px;
+  font-weight: bold;
+}
+.Question {
+  font-weight: bold;
+  font-size: 20px;
+  background-color: darkslateblue;
+  margin-bottom: 20px;
+  font-style: oblique;
+}
+
 .selected {
   background-color: lightslategray;
   border-style: solid;
@@ -21,4 +41,52 @@ li {
   margin: 12px 12px 12px 12px;
   padding: 12px 0px 12px 12px; /* Note 0px padding right */
   list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: none;
+}
+
+th {
+  text-align: left;
+  padding: 8px;
+}
+
+.high-scores {
+  align-items: normal;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgb(0, 0, 238);
+  border-style: none;
+  box-sizing: content-box;
+  /*color: rgb(0, 0, 238);*/
+  color: purple;
+  cursor: pointer;
+  display: inline;
+  font: inherit;
+  /* height: auto; */
+  padding: 0;
+  perspective-origin: 0 0;
+  text-align: start;
+  text-decoration: underline;
+  transform-origin: 0 0;
+  /* width: auto; */
+  -moz-appearance: none;
+  -webkit-logical-height: 1em; /* Chrome ignores auto, so we have to use this hack to set the correct height  */
+  -webkit-logical-width: auto; /* Chrome ignores auto, but here for completeness */
+}
+
+@supports (-moz-appearance: none) {
+  /* Mozilla-only */
+  .high-scores::-moz-focus-inner {
+    /* reset any predefined properties */
+    border: none;
+    padding: 0;
+  }
+  .high-scores:focus {
+    /* add outline to focus pseudo-class */
+    outline-style: dotted;
+    outline-width: 1px;
+  }
 }

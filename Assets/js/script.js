@@ -1,6 +1,7 @@
 var highScoreChart = document.querySelector(".high-scores");
 //var pressForInput = document.createElement("button");
 var startButton=document.querySelector(".start-button");
+
 var myQuiz = document.querySelector("#myQuiz");
 var correctOrIncorrect = document.querySelector("#correctOrIncorrect");
 var timerElement = document.querySelector('.timer-count');
@@ -17,16 +18,20 @@ var correctAnswerCount=0;
 var wrongAnswerCount=0;
 var timer;
 var timerCount;
+var correctOrIncorrectCount = 0;
 var nameLabel = document.createElement("p");
-nameLabel.textContent = "Enter Name";
+nameLabel.textContent = "Your Name ";
 var userName = document.getElementById("uName");
 var saveButton = document.getElementById("save");
 var lastSlide = document.createElement("div");
 lastSlide.appendChild(nameLabel);
+nameLabel.setAttribute("style","font-weight:bold;");
 lastSlide.appendChild(userName);
+userName.setAttribute("style","border:2px solid black;");
 nameLabel.setAttribute("style","display:inline;");
 lastSlide.appendChild(finalScore);
 lastSlide.appendChild(saveButton);
+saveButton.setAttribute("style","display:block;border:2px solid black;text-decoration:bold;");
 var topScore=0;
 var topScorerName="";
 
@@ -34,15 +39,8 @@ var topScorerName="";
 
 highScoreChart.addEventListener("click",function(){
 
-    var lastHighScore = JSON.parse(localStorage.getItem("userDataHighest"));
-    if(lastHighScore=== null){
-      document.querySelector(".message").textContent="Waiting for someone to play";
-    }
-
-    if (lastHighScore !== null) {
-      document.querySelector(".message").textContent = lastHighScore.userName + 
-      " received the higest score of " + lastHighScore.score;
-}});
+window.open("./highestscore.html", "_blank");
+});
 
 
 
@@ -50,6 +48,8 @@ saveButton.addEventListener("click", function(event) {
     
     
     event.preventDefault();
+  saveButton.disabled="true";
+
     var userData = {
       user: "myUser",
       
@@ -86,30 +86,14 @@ saveButton.addEventListener("click", function(event) {
   topScorerName = userName.value.trim();
 
     }
-      
-    
-    });
+  });
 
     
 
    
 var myCount;
 myQuiz.id="myQuizId";
-var form = document.createElement("form");
-// Create an input element for Full Name
-var FN = document.createElement("input");
-    FN.setAttribute("type", "text");
-    FN.setAttribute("name", "FullName");
-    FN.setAttribute("id","inputId");
-    FN.setAttribute("placeholder", "Enter your Name");
-    FN.setAttribute("value","Not yet assigned");
-
-
-
-
-
-
-                
+           
 
 
 var myQuestions = [
@@ -174,14 +158,14 @@ var myQuestions = [
     correctAnswer: "localeCompare()"
   }
 ];
-                 console.log(myQuestions);
                 console.log(myQuestions);
- startButton.setAttribute("style","background-color:red;");
+                console.log(myQuestions);
+ startButton.setAttribute("style","background-color:purple;left-margin:70px;");
 
 
 startButton.addEventListener("click",function(){
     
-    window.alert("it is clicked");
+    //window.alert("it is clicked");
     timerCount = 20;
     startButton.disabled = true;
     localStorage.setItem("correctAnswerCount",0);
@@ -197,7 +181,12 @@ function startTimer() {
     // Sets timer
     timer = setInterval(function () {
       timerCount--;
-      timerElement.textContent = timerCount;
+      if(correctOrIncorrectCount===1){
+        correctOrIncorrect.textContent ="";
+        correctOrIncorrectCount=0;
+      }else{
+      correctOrIncorrectCount++;}
+      timerElement.textContent = "time remaining: "+ timerCount;
       if (timerCount >= 0) {
         // Tests if win condition is met
         if (quizIndex==myQuestions.length && timerCount > 0) {
@@ -212,7 +201,9 @@ function startTimer() {
       if (timerCount === 0 && quizIndex<myQuestions.length) {
         
         clearInterval(timer);
-        showForm();
+        removeElement();
+       // resultScreen();
+        //showForm();
         //timeOverResultScreen();
         
       }
@@ -224,7 +215,8 @@ function startTimer() {
 function resultScreen(){
      myCount=localStorage.getItem("correctAnswerCount");
     
-    finalScore.textContent=myCount;
+    finalScore.textContent="Your Score is: "+myCount;
+    finalScore.setAttribute("style","font-weight:bold;border:2px solid black;display:inline;margin-left:10px;padding-top:10px;margin-bottom:9px;");
     myQuiz.appendChild(lastSlide);
     
     
@@ -236,16 +228,6 @@ function showInput(){
     
     document.body.innerHTML = userInput;
     
-}
-
-function timeOverResultScreen(){
-    var myCount=localStorage.getItem("wrongAnswerCount");
-    var element=document.getElementById("listHeaderId");
-    element.parentNode.removeChild(element);
-    finalScore.textContent=myCount;
-    console.log("my count is "+myCount+"and "+finalScore.textContent);
-    myQuiz.appendChild(form);
-    myQuiz.appendChild(finalScore);
 }
 
 
@@ -358,11 +340,11 @@ list.onmouseout = function(event){
 function myScript(e){
     e.target.setAttribute("style","color:gray;");
     console.log("My log says "+e.target);
-    alert(e.target.textContent);
+    //alert(e.target.textContent);
     
     correctOrIncorrect.setAttribute("style","border-top:2px solid black;font-weight:bold;text-align:center;padding:10px;");
     if(e.target.textContent===answerVariable){
-        alert("correct");
+        //alert("correct");
         correctAnswerCount++;
         localStorage.setItem("correctAnswerCount",correctAnswerCount);
         correctOrIncorrect.textContent="Correct";
@@ -378,7 +360,7 @@ function myScript(e){
             correctOrIncorrect.textContent="InCorrect";
         }
         console.log("call to remove element");
-        alert("going to remove element now");
+        //alert("going to remove element now");
         removeElement();
         
 
@@ -392,14 +374,15 @@ function removeElement(){
     console.log("The Removed element is "+element);
     
     quizIndex++;
-    if(quizIndex<myQuestions.length){
+    if(quizIndex<myQuestions.length && timerCount > 0){
        
         console.log("value of quiz index is "+quizIndex);
         showQuestions(quizIndex);
 
     }
     else{
-
+      clearInterval(timer);
+          resultScreen();
         console.log("nothing to show");
     }
 }

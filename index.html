@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CSS Box Styling</title>
+    <title>Javascript-Quiz</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
   <body>
     <header>
-        <button class="high-scores">High Scores</button>
-        <h3 class="message"></h3>  
+        <div style="overflow-x:auto;">
+            <table>
+            <th align="left">
+        <button class="high-scores">View HighScores</button>
+        <!-- <h3 class="message"></h3>   -->
+        </th>
+        <th align="right">
         <div class="card timer">
             <div class="timer-count">
-              <div class="large-font timer-count">10</div>
+              <div class="large-font timer-count">time remaining: 20</div>
             </div>
           </div>
+        </th>
+        </table>
+        </div>
     </header>
 
     <main>
@@ -35,6 +43,6 @@
             <button id="save">SAVE</button>
     </form>
     </main>
-    <script src="./js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
