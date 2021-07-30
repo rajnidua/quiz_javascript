@@ -1,4 +1,6 @@
+``` diff
 # quiz_javascript
+```
 
 A Javascript Quiz
 
@@ -17,14 +19,17 @@ user name and score are stored in local storage as objects.
 If user score is highest, then it is also stored in highest score object in local storage.
 
 On clicking "view highscore" link , a new window opens up which displays highest score and corresponding user name.
+``` diff
++Screenshots:
+```
+![](./Assets/images/screenshot1.jpeg)
+![](./Assets/images/screenshot2.jpeg)
+![](./Assets/images/screenshot3.jpeg)
+![](./Assets/images/screenshot4.jpeg)
+![](./Assets/images/screenshot5.jpeg)
 
-Screenshots:
-./Assets/images/screenshot1
-./Assets/images/screenshot2
-./Assets/images/screenshot3
-./Assets/images/screenshot4
-./Assets/images/screenshot5
 
-# Git hub repository link : https://github.com/rajnidua/quiz_javascript
-
-# Git hub project link : https://rajnidua.github.io/quiz_javascript/
+``` diff 
+#live app link :
+```
+ https://rajnidua.github.io/quiz_javascript/
